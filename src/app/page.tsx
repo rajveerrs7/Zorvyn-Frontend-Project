@@ -41,7 +41,10 @@ import clsx from "clsx";
 const panelMotion = {
   initial: { opacity: 0, y: 18 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  transition: {
+    duration: 0.6,
+    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+  },
 };
 
 const currency = (value: number) =>
@@ -440,7 +443,7 @@ export default function Home() {
                         borderRadius: "12px",
                         border: "1px solid rgba(148,163,184,0.2)",
                       }}
-                      formatter={(value: number) => currency(value)}
+                      formatter={(value) => currency(Number(value ?? 0))}
                     />
                     <Line
                       type="monotone"
@@ -496,7 +499,7 @@ export default function Home() {
                       ))}
                     </Pie>
                     <Tooltip
-                      formatter={(value: number) => currency(value)}
+                      formatter={(value) => currency(Number(value ?? 0))}
                       contentStyle={{
                         background: "#0f172a",
                         borderRadius: "12px",
@@ -1077,7 +1080,7 @@ export default function Home() {
                     <XAxis dataKey="month" stroke="#94a3b8" />
                     <YAxis stroke="#94a3b8" />
                     <Tooltip
-                      formatter={(value: number) => currency(value)}
+                      formatter={(value) => currency(Number(value ?? 0))}
                       contentStyle={{
                         background: "#0f172a",
                         borderRadius: "12px",
